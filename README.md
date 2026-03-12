@@ -6,13 +6,16 @@ You still clone the repo metadata but don’t download the entire working tree.
 
 Up-to-date method (starting from scratch, without an existing project):
 
-1. Create folder (or folder/subfolder) in Github and add a README.md in it
-  * In this case, `R-scripts/test-package` (`test-package` will be the name of the R project)  
-3. Create a folder on your laptop where the repo will live
+### 1. Create folder (or folder/subfolder) in Github and add a README.md in it
+  * In this case, `R-scripts/test-package` (`test-package` will be the name of the R project)
+
+### 2. Create a folder on your laptop where the repo will live
   * In this case, `C:\Data\R_test\test-sparse-checkout`
-3. In the terminal, go to `test-sparse-checkout`
+
+### 3. In the terminal, go to `test-sparse-checkout`
   * For instance, open the terminal in RStudio and navigate there by `cd test-sparse-checkout`
-4. Run code below (requires Git version >= 2.25)  
+
+### 4. Run code below (requires Git version >= 2.25)  
 ```
 git clone --filter=blob:none --sparse https://github.com/DagHjermann/test_sparse.git
 cd test_sparse
@@ -22,30 +25,40 @@ cd test_sparse
 * No need for sparse-checkout init (as in older workflows)  
 * Fully supported in Git 2.25+ and recommended in [2026 sparse‑checkout guides](https://oneuptime.com/blog/post/2026-01-24-git-sparse-checkout/view).
   
-5. Run
+### 5. Run
 ```
 git sparse-checkout set "R-scripts/test-package"
 ```
-6. Then in RStudio:  
+
+### 6. Then in RStudio:  
 * File → New Project → Existing Directory  
 * Point to the "lowest" folder created, i.e. `C:\Data\R_test\test-sparse-checkout\test_sparse\R-scripts\test-package`  
-* RStudio will create the .Rproj file (`test-package.Rproj`) inside `test-package` and a .gitignore file at root level of the git folder, i.e. in `C:\Data\R_test\test-sparse-checkout\test_sparse`
+* RStudio will create the .Rproj file (`test-package.Rproj`) inside `test-package`
+* RStudio also creates a .gitignore file *at root level of the git folder*, i.e. in `C:\Data\R_test\test-sparse-checkout\test_sparse`  
 
-7. Move the .gitignore file to `R-scripts\test-package`
-* This means it will only apply to your R project   
+### 7. Move the .gitignore file to `R-scripts\test-package`  
+* NOTE: if the got repo already contained a gitignore file, it may have been overwritten by RStudio! You may want to check this with `git log --test_sparse/.gitignore`  
+* If this is not a problem, just move the file - this means it will only apply to your R project
+* If this *is* a problem, restore the gitignore. Then make a new empty .gitignore in test-package and add
+```
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+```
 
-8. Make your first commit and push  
+### 8. Make your first commit and push  
 * In RStudio, go to Git tab  
 * Tick off the file `test-package.Rproj` and `.gitignore`  
 *  Commit with git message "Initiate R project" for instance
 *  Push by clicking push button
 
-7. Test it with an R file:
+### 9. Test it with an R file:
 * Create a new R file (File > New File)
 * Write something in it (code or whatever)
 * Save as testfile1.R  
  
-8. Test it with a Quarto file (File > New File)  
+### 10. Test it with a Quarto file (File > New File)  
 * There is automatically content, but in order for the results to be shown, you must add `execute: keep-md:true` to the header, so the header looks like this:
 ```
 ---
@@ -75,7 +88,7 @@ plot(x, y)
 * Also tick off the folder `testfile2_files`, which automatically ticks off just one file: `testfile2_files/figure-html/unnamed-chunk-3-1.png`
 * Commit with some git message, and then push
 
-9. Now check your github repo online
+### 11. Now check your github repo online
 * Try to open `testfile2.html.md`. THis shold now contain both code and results, including your figure.
 
 ## Old version (first suggestion from Copilot)  
