@@ -63,19 +63,20 @@ y <- 10 + 0.5*x + rnorm(n=200,sd=0.2)
 plot(x, y)
 ```
 * Save as testfile2.qmd
-* Click render - now we have three files (extensions qmd, html and html.md) and a folder `testfile2_files`  
-* Open .gitignore and add the following four lines, which means these types of file will not be added to git or github:  
+* Click render - this creates two more files (with extensions html and html.md) and a folder `testfile2_files` (containing both javascript files and your figure)   
+* Open .gitignore and add the following four lines, and save it. This means these types of file will not be added to git or github. This is something we typuically want, as HTML files are usually not so useful on github (they are big and cannot be "diff'ed").  
 ```
 *.html
 *.js
 *.css
 *.woff
 ```
-* Now there should be *two* files to commit in the Git pane (`testfile2.qmd`and `testfile2.html.md`)* , plus `.gitignore`. Tick of all off them
+* If you now update the Git pane, there should now be *two* 'testfile2' files to commit: testfile2.qmd`and `testfile2.html.md`, plus `.gitignore`. Tick of all off them.
 * Also tick off the folder `testfile2_files`, which automatically ticks off just one file: `testfile2_files/figure-html/unnamed-chunk-3-1.png`
-* Commit and push
+* Commit with some git message, and then push
 
-9. Now check your github repo online  
+9. Now check your github repo online
+* Try to open `testfile2.html.md`. THis shold now contain both code and results, including your figure.
 
 ## Old version (first suggestion from Copilot)  
 ```
