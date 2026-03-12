@@ -36,10 +36,10 @@ git sparse-checkout set "R-scripts/test-package"
 * RStudio will create the .Rproj file (`test-package.Rproj`) inside `test-package`
 * RStudio also creates a .gitignore file *at root level of the git folder*, i.e. in `C:\Data\R_test\test-sparse-checkout\test_sparse`  
 
-### 7. Move the .gitignore file to `R-scripts\test-package`  
-* NOTE: if the got repo already contained a gitignore file, it may have been overwritten by RStudio! You may want to check this with `git log --test_sparse/.gitignore`  
-* If this is not a problem, just move the file - this means it will only apply to your R project
-* If this *is* a problem, restore the gitignore. Then make a new empty .gitignore in test-package and add
+### 7. Delete the .gitignore file RStudio made and make a new one in the `R-scripts\test-package`  
+* NOTE: if the git repo already contained a gitignore file, it may have been overwritten by RStudio! You may want to check this with `git log --test_sparse/.gitignore`  
+  * If the file has a history, it should be restored to its previous state  
+* If not, just delete it and make a new on inside `R-scripts\test-package` with vcontents as below. This file will only apply to your R project.  
 ```
 .Rproj.user/
 .Rhistory
