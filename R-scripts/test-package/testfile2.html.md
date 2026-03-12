@@ -48,3 +48,20 @@ You can add options to executable code like this
 
 
 The `echo: false` option disables the printing of code (only output is displayed).
+  
+Here is a plot:
+
+::: {.cell}
+
+```{.r .cell-code}
+x <- 4 + rnorm(200)
+y <- 10 + 0.5*x + rnorm(n=200,sd=0.2)
+plot(x, y)
+```
+
+::: {.cell-output-display}
+![](testfile2_files/figure-html/unnamed-chunk-3-1.png){width=672}
+:::
+:::
+
+
