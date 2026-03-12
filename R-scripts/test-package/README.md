@@ -1,3 +1,3 @@
 ## test-package
 
-This is the content
+See README under "test_sparse" for a description of the workflow used   
