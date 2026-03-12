@@ -1,1 +1,1 @@
-## Test readme for R project
+## Test readme for all R scripts
